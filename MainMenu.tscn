@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://4dcctrkroxmn"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_lsfbb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ihuwb"]
+font_size = 116
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lsfbb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game1Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../QuitButton")
+text = "Ballon Popper"
+
+[node name="Game2Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Physics"
+
+[node name="Game3Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Loops"
+
+[node name="Game4Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Collision"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Mini Games"
+label_settings = SubResource("LabelSettings_ihuwb")
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.5
+offset_top = -96.0
+offset_right = 58.5
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_bottom = NodePath("../VBoxContainer/Game1Button")
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/Game1Button" to="." method="_on_game_1_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Game2Button" to="." method="_on_game_2_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Game3Button" to="." method="_on_game_3_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Game4Button" to="." method="_on_game_4_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

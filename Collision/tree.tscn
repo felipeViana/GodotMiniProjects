@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://c88erpitmgxpb"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yokca"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mf34f"]
+albedo_color = Color(0.631373, 0.372549, 0.0745098, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3og0u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uh4ri"]
+albedo_color = Color(0, 0.694118, 0.392157, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7c3cf"]
+height = 2.06883
+
+[node name="Tree" type="StaticBody3D" groups=["Tree"]]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49618, 0)
+mesh = SubResource("CylinderMesh_yokca")
+surface_material_override/0 = SubResource("StandardMaterial3D_mf34f")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.32654, 0, 0, 0, 1.55487, 0, 0, 0, 2.34909, 0, 2.99807, 0)
+mesh = SubResource("SphereMesh_3og0u")
+surface_material_override/0 = SubResource("StandardMaterial3D_uh4ri")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.59767, 0, 0, 0, 1.21922, 0, 0, 0, 2.05443, 0, 4.08867, 0)
+mesh = SubResource("SphereMesh_3og0u")
+surface_material_override/0 = SubResource("StandardMaterial3D_uh4ri")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.08884, 0, 0, 0, 1.08019, 0, 0, 0, 1.54292, 0, 4.81853, 0)
+mesh = SubResource("SphereMesh_3og0u")
+surface_material_override/0 = SubResource("StandardMaterial3D_uh4ri")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 2.338, 0, 0, 0, 0.8, -0.0158287, 2.93498, -0.0357223)
+shape = SubResource("CylinderShape3D_7c3cf")

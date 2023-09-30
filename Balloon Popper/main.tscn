@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwfuevdoy78w3"]
+
+[ext_resource type="Script" path="res://Balloon Popper/BallonManager.gd" id="1_cyrng"]
+[ext_resource type="PackedScene" uid="uid://dd10hydhgd7mm" path="res://Balloon Popper/balloon.tscn" id="2_jjyms"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cu0c4"]
+font_size = 49
+
+[sub_resource type="LabelSettings" id="LabelSettings_ye6rh"]
+font_size = 76
+
+[node name="Main" type="Node3D" node_paths=PackedStringArray("score_text", "finish_text", "buttons")]
+script = ExtResource("1_cyrng")
+score_text = NodePath("ScoreText")
+finish_text = NodePath("FinishText")
+buttons = NodePath("VBoxContainer")
+
+[node name="Balloon" parent="." instance=ExtResource("2_jjyms")]
+clicks_to_pop = 4
+
+[node name="Balloon2" parent="." instance=ExtResource("2_jjyms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40317, 0)
+clicks_to_pop = 2
+
+[node name="Balloon3" parent="." instance=ExtResource("2_jjyms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74555, 0, 0)
+clicks_to_pop = 1
+
+[node name="Balloon4" parent="." instance=ExtResource("2_jjyms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.67894, 0)
+
+[node name="Balloon5" parent="." instance=ExtResource("2_jjyms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05328, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.50891)
+current = true
+fov = 55.1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.667352, 0.744743, 0, -0.744743, 0.667352, -0.622741, 1.83805, 1.15112)
+
+[node name="ScoreText" type="Label" parent="."]
+offset_left = 31.0
+offset_top = 9.0
+offset_right = 353.0
+offset_bottom = 122.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_cu0c4")
+
+[node name="FinishText" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "FINISH!"
+label_settings = SubResource("LabelSettings_ye6rh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.5
+offset_top = -82.0
+offset_right = 54.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="BackToMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "BackToMenu"
+
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
